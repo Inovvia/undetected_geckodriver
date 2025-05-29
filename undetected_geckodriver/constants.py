@@ -1,14 +1,20 @@
+import os
+current_working_directory = os.getcwd()
+
 # Constants #
 TO_REPLACE_STRING = b"webdriver"
 
+
 PLATFORM_DEPENDENT_PARAMS = {
     # Do not remove, the (actual) support for Windows & macOS is coming soon
-    # "Windows": {
-    #    "firefox_execs": ["firefox.exe"],
-    #    "firefox_paths": ["C:\\Program Files\\Mozilla Firefox"],
-    #    "undetected_path": "C:\\Users\\{USER}\\AppData\\Local\\undetected_firefox\\",
-    #    "xul": "xul.dll",
-    # },
+
+    #Temporary support for windows use cwd to create browser path in current directory to prevent permission issues
+    "Windows": {
+       "firefox_execs": ["firefox.exe"],
+       "firefox_paths": ["C:\\Program Files\\Mozilla Firefox"],
+       "undetected_path": f"{current_working_directory}\\browser\\undetected_firefox\\",
+       "xul": "xul.dll",
+    },
     # "Darwin": {
     #    "firefox_execs": ["Firefox.app"],
     #    "firefox_paths": ["/Applications/Firefox.app/Contents/MacOS"],
